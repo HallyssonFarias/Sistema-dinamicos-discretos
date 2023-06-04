@@ -4,8 +4,8 @@ import numpy as np
 # Define a variável simbólica x
 x = symbols('x')
 
-# Define a função f(x) substitua pela a qual queira achar o ponto fixo
-f = (4.1**(2))*4.1*x*(1-x)*(1-4.1*x*(1-x))*(1-4.1*4.1*x*(1-x)*(1- 4.1*x*(1-x)))
+# Define a função f(x) substitua pela funcao que deseja achar o ponto fixo
+f = 68.921*x*(1 - x)*(-4.1*x*(1 - x) + 1)*(-16.81*x*(1 - x)*(-4.1*x*(1 - x) + 1) + 1)
 
 # Resolve a equação f(x) = x para encontrar o ponto fixo
 eq = Eq(f, x)
