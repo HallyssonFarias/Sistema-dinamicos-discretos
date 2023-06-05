@@ -25,7 +25,7 @@ def iteracao(r, x, xo, decimal, opcao, k, a):
         y = round(y, decimal)
         if opcao == 1 and i < k:
             print(f"{i}º iteração: \n {y}")
-        elif opcao == 2 and i >= a and i <= k:
+        elif opcao == 2 and i >= a:
             print(f"{i}º iteração: \n {y}")
 
 
