@@ -8,11 +8,11 @@ print("A função é: f(x) = r*x*(1-x)")
 
 # Define os valores das variáveis
 r = float(input("Escolha o r: "))
-k = float(input("Escolha o valor inicial de x: "))
+xo = float(input("Escolha o valor inicial de x: "))
 print(" ")
 
 # Define a opção de iterações
-opcao = int(input("Opção 1: 0 < n < 4 \nOpção 2: 101 <= n <= 104 \nEscolha sua opção: "))
+opcao = int(input("Opção 1: 0 < n < 4 \nOpção 2: de A até B \nEscolha sua opção: "))
 print(" ")
 
 # Define a função
@@ -34,20 +34,21 @@ print("As iterações são: \n ")
 # Função
 
 
-def newton_raphson(f, df, x0, iteracao, opcao):
-    x = x0
+def newton_raphson(f, df, xo, iteracao, opcao, a):
+    x_ = xo
     for i in range(1, iteracao + 1):
-        x = x - f(x) / df(x)
+        x_ = x_ - f(x_) / df(x_)
         if opcao == 1 and i <= 4:
-            print(f"Iteração {i}: \n {x}")
-        elif opcao == 2 and i >= 101 and i <= 104:
-            print(f"Iteração {i}: \n {x}")
-    return x
+            print(f"Iteração {i}: \n {x_}")
+        elif opcao == 2 and i >= a:
+            print(f"Iteração {i}: \n {x_}")
+    return x_
 
 
 # opcões
 if opcao == 1:
-    newton_raphson(f, df, k, 4, opcao)
+    newton_raphson(f, df, xo, 4, opcao, 0)
 elif opcao == 2:
-    newton_raphson(f, df, k, 104, opcao)
-
+    a = int(input("de: "))
+    b = int(input("até: "))
+    newton_raphson(f, df, xo, b, opcao, a)
