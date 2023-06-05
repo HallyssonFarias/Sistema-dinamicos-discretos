@@ -39,9 +39,9 @@ def newton_raphson(f, df, x0, iteracao, opcao):
     for i in range(1, iteracao + 1):
         x = x - f(x) / df(x)
         if opcao == 1 and i <= 4:
-            print(f"Iteração {i}: {x}")
+            print(f"Iteração {i}: \n {x}")
         elif opcao == 2 and i >= 101 and i <= 104:
-            print(f"Iteração {i}: {x}")
+            print(f"Iteração {i}: \n {x}")
     return x
 
 
