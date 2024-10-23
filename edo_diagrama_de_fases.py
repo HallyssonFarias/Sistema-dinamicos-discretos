@@ -6,24 +6,28 @@ import matplotlib.pyplot as plt
 initial_conditions = [1, 2]  # [rabbits, foxes]
 initial_conditions_2 = [4, 5]
 # Parameters
-a = 2  # rabbits birth rate
-b = 2  # rate at which rabbits are eaten
+a = 1  # rabbits birth rate
+b = 1  # rate at which rabbits are eaten
 c = 1  # foxes birth rate proportional to rabbits eaten
-d = 2  # foxes death rate
-
+d = 1  # foxes death rate
+k = 5  # limit of food
 # A grid of time points (in days)
-t = np.linspace(0, 160, 160)
+t = np.linspace(0, 200, 200)
 
-# The differential equations for the predator-prey model.
-def deriv(y, t, a, b, c, d):
+
+def deriv(y, t, a, b, c, d):  # The differential equations for the predator-prey model.  # adicionar um k aqui
     rabbits, foxes = y
+    # print(f"At time {t:.2f}, rabbits = {rabbits:.4f}, foxes = {foxes:.4f}")
+
     d_rabbits_dt = a * rabbits - b * foxes * rabbits
+    # d_rabbits_dt = a * rabbits * (1 - (rabbits/k)) - b * foxes * rabbits
     d_foxes_dt = c * foxes * rabbits - d * foxes
     return [d_rabbits_dt, d_foxes_dt]
 
+
 # Integrate the equations over the time grid, t.
-ret = odeint(deriv, initial_conditions, t, args=(a, b, c, d))
-ret2 = odeint(deriv,initial_conditions_2,t, args=(a+1, b+1, c+1, d+1))
+ret = odeint(deriv, initial_conditions, t, args=(a, b, c, d))  # adicionar um k aqui
+ret2 = odeint(deriv, initial_conditions_2, t, args=(a+1, b+1, c+1, d+1))  # adicionar um k aqui
 
 # Split the result into rabbit and fox populations
 rabbits, foxes = ret.T
